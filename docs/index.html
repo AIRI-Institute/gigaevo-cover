@@ -734,13 +734,13 @@ redis-server
                                                             <ul>
                                                                 <li><strong>Визард (рекомендуется)</strong>: Создайте директорию при помощи специального визарда (<code>tools/wizard.py</code>):
                                                                     <ol>
-                                                                        <li>Создайте и заполните для задачи YAML-конфиг в <code>config/wizard/</code> (См. <code>config/wizard/heilbron.yaml</code> для примера)
+                                                                        <li>Создайте и заполните для задачи YAML-конфиг в <code>tools/config/wizard/</code> (См. <code>tools/config/wizard/heilbron.yaml</code> для примера)
                                                                             <ul>
                                                                                 <li>YAML файл описывает задачу декларативно: название, описание задачи, список метрик с границами и типом, параметры валидации, сигнатуру программы для эволюции, а также список начальных программ.</li>
                                                                                 <li>Визард генерирует все необходимые файлы с TODO-комментариями.</li>
                                                                             </ul>
                                                                         </li>
-                                                                        <li>Запустите создание директории задачи через <code>python tools/wizard.py config/wizard/my_config.yaml</code>. От пользователя требуется реализовать:
+                                                                        <li>Запустите создание директории задачи через <code>python -m tools.wizard tools/config/wizard/my_config.yaml</code>. От пользователя требуется реализовать:
                                                                             <ul>
                                                                                 <li>Логику подсчета метрик в <code>validate.py</code></li>
                                                                                 <li>Код начальных программ в <code>initial_programs/*.py</code></li>
@@ -762,10 +762,10 @@ redis-server
 
                                                 <pre><code class="language-python">
 # Генерация из существующего конфига
-python tools/wizard.py config/wizard/heilbron.yaml
+python -m tools.wizard heilbron.yaml
 
 # Или создание пользовательского конфига (см. tools/README.md для формата)
-python tools/wizard.py config/wizard/my_problem.yaml</code></pre>
+python -m tools.wizard my_problem.yaml</code></pre>
 
                                                 <p><strong>Сгенерированная структура:</strong></p>
                                                 <pre><code>
