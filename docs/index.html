@@ -108,6 +108,7 @@
                 <a class="nav-link" href="#capabilities">Возможности</a>
                 <a class="nav-link" href="#ui-usage">Пример проекта на GigaEvo</a>
                 <a class="nav-link" href="#installation">Установка GigaEvo</a>
+                <a class="nav-link" href="#evolution">Эволюция промптов для языковых моделей</a>
                 <a class="nav-link" href="#roadmap">Дорожная карта</a>
                 <a class="nav-link" href="#team">Команда</a>
             </nav>
@@ -879,46 +880,122 @@ python tools/comparison.py \
             </section>            
 
 
-            <!-- Скоро -->
-            <section class="mb-5" id="soon">
+            <!-- Эволюция -->
+            <section class="mb-5" id="evolution">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">                            
                             <!-- Основной заголовок секции -->
                             <h3 class="mb-2">Эволюция промптов для языковых моделей</h3> 
-                            <h4 class="mb-4">(скоро - декабрь 2025)</h4>
 
                             <!-- Описание -->
                             <div class="mb-4">   
-                                <p>GigaEvo получит функцию автоматического улучшения промптов для работы с языковыми моделями.</p>
+                                <p>В новой версии (v.0.2.1) GigaEvo Platform получила функцию автоматического улучшения промптов для работы с языковыми моделями.</p>
+                                
+                                <h5>Создаём эксперимент с эволюцией промпта</h5>
+                                <div class="mb-4">   
+                                    <a
+                                        href="images/ui_evolution.jpg"
+                                        data-fancybox="single"
+                                        data-caption="Evolution UI"
+                                    >
+                                        <img src="images/ui_evolution.jpg" alt="Evolution UI" class="img-fluid rounded" />
+                                    </a>
+                                </div> 
 
-                                <p>Вам нужно будет:</p>
 
                                 <ol>
-                                    <li>Создать начальный промпт с переменными для входных данных</li>
-                                    <li>Загрузить примеры данных с правильными ответами</li>
-                                    <li>Выбрать критерии оценки качества ответов</li>
+                                    <li>Введите название и краткое описание цели эксперимента.</li>
+                                    <li>Загрузите датасет, укажите целевые метрики (целевой столбец)</li>
+                                    <li>Впишите базовый промпт для эволюции (используйте плейсхолдеры данных)</li>
                                 </ol>
 
-                                <p>Система автоматически извлечёт нужную часть из ответа языковой модели и оценит его качество в соответствии с вашей задачей.</p>
+                                <div class="accordion mb-4">
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#promptFormat">
+                                                Ожидаемый формат промпта
+                                            </button>
+                                        </h5>
+                                        <div id="promptFormat" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <pre><code>
+Your task: [describe what you want the LLM to do]
+Context: {column1}, {column2}, {column3}
+Question: What is the *target*?
+Answer: [expected answer]
+                                                </code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="accordion mb-4">
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#promptExample">
+                                                Пример
+                                            </button>
+                                        </h5>
+                                        <div id="promptExample" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <pre><code>
+Your task: [describe what you want the LLM to do]
+Context: {column1}, {column2}, {column3}
+Question: What is the *target*?
+Answer: [expected answer]
+                                                </code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
 
+                                <ol start="4">
+                                    <li>Вы можете использовать автоматическое генерирование базового промпта для эволюции из шаблона или автоматически добавить столбцы из загруженного документа</li>
+                                    <li>Выберите тип задачи ( de>classification</code>, de>multi_choice</code>, de>math</code>, de>summarization</code> )</li>
+                                    <li>Настройте дополнительные параметры — количество поколений, тип LLM-модели и другие опции.</li>
+                                    <li>Создайте эксперимент по кнопке Create Experiment — система автоматически присвоит ему идентификатор формата.</li>
+                                    <li>Можете выбрать шаблонный эксперимент из списка — система автоматически заполнит необходимые поля и загрузит данные, останется только запустить.</li>
+                                </ol>
                                 <p>Метод работает для любых LLM-ориентированных задач с проверяемыми результатами, например:</p>
+    
                                 <ul>
-                                    <li>Классификация текстов — настройка промптов для сортировки документов по категориям</li>
-                                    <li>Извлечение информации — улучшение промптов для выделения ключевых данных из текста</li>
-                                    <li>Этапы многошаговых агенты — оптимизация промптов для сложных систем с несколькими этапами работы</li>
+                                    <li><strong>Классификация текстов</strong> - настройка промптов для сортировки документов по категориям</li>
+                                    <li><strong>Извлечение информации</strong> - улучшение промптов для выделения ключевых данных из текста</li>
+                                    <li><strong>Этапы многошаговых агентов</strong> - оптимизация промптов для сложных систем с несколькими этапами работы</li>
                                 </ul>
 
-                                <p>Вы сможете выбрать удобный формат проверки вывода LLM:</p>
+                                <h5>Валидируем качество промптов</h5>
+                                
+                                <p>Система использует тот же подход, что и для ML-задач: создает популяцию промптов, оценивает их качество на ваших данных и итеративно улучшает решение.</p>
+                                
+                                <h5>GigaEvo поддерживает следующие режимы:</h5>
+    
+                                <ol>
+                                    <li><strong>Бинарная классификация текста</strong> (de>classification</code>) - модель возвращает вероятность (0.0-1.0); таргет - 0 или 1</li>
+                                    <li><strong>Выбор из нескольких вариантов ответа</strong> (de>multi_choice</code>) - модель возвращает букву ("A", "B", "C", "D", …); поддерживается до 26 классов (A-Z)</li>
+                                    <li><strong>Решение математических задач</strong> (de>math</code>) - модель возвращает численный ответ (42, 3.1415, …)</li>
+                                    <li><strong>Суммаризация входного текста в свободном виде</strong> (de>summarization</code>) - строка с кратким пересказом, сравниваем похожесть двух текстов</li>
+                                </ol>
+                                <h5>Используем результаты</h5>
+    
+                                <ol>
+                                    <li>Загрузите эксперимент, запустите эволюцию и дождитесь получения лучшего решения по метрикам.</li>
+                                    <li>Выгрузите результаты эксперимента - платформа автоматически выберет промпт, обеспечивающий наибольшее качество для вашей задачи.</li>
+                                    <li>Используйте полученный промпт для решения целевой задачи с вашей LLM.</li>
+                                </ol>
+
+                                <h5>Что планируем добавить</h5>
+                                
+                                <p>В следующих версиях будет добавлен функционал кастомного формата проверки вывода LLM:</p>
+                                
                                 <ul>
                                     <li>Структурированные форматы (JSON, XML)</li>
                                     <li>Регулярные выражения</li>
-                                    <li>Сравнение похожести текстов</li>
                                     <li>Оценка другой языковой моделью (LLM-as-a-judge)</li>
                                     <li>Свои собственные метрики на Python</li>
                                 </ul>
 
-                                <p>Функция находится в разработке.</p>
+                                <p>Функция находится в активном развитии.</p>
                                 <p>Смотрите дорожную карту проекта и следите за обновлениями!</p>
                             </div> 
                         </div>

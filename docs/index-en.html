@@ -108,6 +108,7 @@
                 <a class="nav-link" href="#capabilities">Capabilities</a>
                 <a class="nav-link" href="#ui-usage">Example Project on GigaEvo</a>
                 <a class="nav-link" href="#installation">GigaEvo Installation</a>
+                <a class="nav-link" href="#evolution">Evolution of prompts for language models</a>
                 <a class="nav-link" href="#roadmap">Roadmap</a>
                 <a class="nav-link" href="#team">Team</a>
             </nav>
@@ -866,52 +867,129 @@ python tools/comparison.py \
                 </div>
             </section>            
 
-            <!-- Скоро -->
-            <section class="mb-5" id="soon">
+            <!-- Evolution -->
+            <section class="mb-5" id="evolution">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">                            
-                            <!-- Основной заголовок секции -->
-                            <h3 class="mb-2">Evolution of Prompts for Language Models</h3>
-                            <h4 class="mb-4">(coming soon - December 2025)</h4>
+                            <!-- Main section title -->
+                            <h3 class="mb-2">Evolution of prompts for language models</h3> 
 
-                            <!-- Описание -->
+                            <!-- Description -->
                             <div class="mb-4">   
-                                <p>GigaEvo will acquire a feature for automatic prompt improvement when working with language models.</p>
+                                <p>In the new version (v.0.2.1), the GigaEvo Platform received a feature for automatic prompt enhancement for working with language models.</p>
+                                
+                                <h5>Creating an experiment with prompt evolution</h5>
+                                <div class="mb-4">   
+                                    <a
+                                        href="images/ui_evolution.jpg"
+                                        data-fancybox="single"
+                                        data-caption="Evolution UI"
+                                    >
+                                        <img src="images/ui_evolution.jpg" alt="Evolution UI" class="img-fluid rounded" />
+                                    </a>
+                                </div> 
 
-                                <p>You will need to:</p>
 
                                 <ol>
-                                    <li>Create an initial prompt with variables for input data</li>
-                                    <li>Upload example data with correct answers</li>
-                                    <li>Select criteria to evaluate answer quality</li>
+                                    <li>Enter the title and a short description of the experiment’s goal.</li>
+                                    <li>Upload a dataset and specify target metrics (target column).</li>
+                                    <li>Write the base prompt for evolution (use data placeholders).</li>
                                 </ol>
 
-                                <p>The system will automatically extract the relevant part from the language model's response and assess its quality according to your task.</p>
+                                <div class="accordion mb-4">
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#promptFormat">
+                                                Expected prompt format
+                                            </button>
+                                        </h5>
+                                        <div id="promptFormat" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <pre><code>
+Your task: [describe what you want the LLM to do]
+Context: {column1}, {column2}, {column3}
+Question: What is the *target*?
+Answer: [expected answer]
+                                                </code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="accordion mb-4">
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#promptExample">
+                                                Example
+                                            </button>
+                                        </h5>
+                                        <div id="promptExample" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <pre><code>
+Your task: [describe what you want the LLM to do]
+Context: {column1}, {column2}, {column3}
+Question: What is the *target*?
+Answer: [expected answer]
+                                                </code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
 
-                                <p>This method works for any LLM-oriented tasks with verifiable results, for example:</p>
+                                <ol start="4">
+                                    <li>You can automatically generate the base prompt for evolution from a template or automatically add columns from the uploaded document.</li>
+                                    <li>Select the task type (<code>classification</code>, <code>multi_choice</code>, <code>math</code>, <code>summarization</code>).</li>
+                                    <li>Configure additional parameters — number of generations, LLM model type, and other options.</li>
+                                    <li>Create the experiment by clicking <strong>Create Experiment</strong> — the system will automatically assign it an identifier.</li>
+                                    <li>You can also choose a template experiment from the list — the system will fill in the required fields and load the data; you’ll just need to run it.</li>
+                                </ol>
+                                <p>The method works for any LLM-oriented tasks with verifiable results, for example:</p>
+    
                                 <ul>
-                                    <li>Text classification — tuning prompts for sorting documents by category</li>
-                                    <li>Information extraction — improving prompts to highlight key data from text</li>
-                                    <li>Multi-step agents — optimizing prompts for complex systems with multiple workflow stages</li>
+                                    <li><strong>Text classification</strong> – adjusting prompts for sorting documents by category.</li>
+                                    <li><strong>Information extraction</strong> – improving prompts for identifying key data from text.</li>
+                                    <li><strong>Multi-step agent stages</strong> – optimizing prompts for complex systems with several working stages.</li>
                                 </ul>
 
-                                <p>You will be able to choose a convenient output validation format for the LLM:</p>
+                                <h5>Validating prompt quality</h5>
+                                
+                                <p>The system uses the same approach as ML tasks: it creates a population of prompts, evaluates their quality on your data, and iteratively improves the solution.</p>
+                                
+                                <h5>GigaEvo supports the following modes:</h5>
+    
+                                <ol>
+                                    <li><strong>Binary text classification</strong> (<code>classification</code>) – the model returns a probability (0.0–1.0); target - 0 or 1.</li>
+                                    <li><strong>Multiple-choice selection</strong> (<code>multi_choice</code>) – the model returns a letter ("A", "B", "C", "D", …); up to 26 classes (A–Z) are supported.</li>
+                                    <li><strong>Solving math problems</strong> (<code>math</code>) – the model returns a numeric answer (42, 3.1415, …).</li>
+                                    <li><strong>Free-form text summarization</strong> (<code>summarization</code>) – a string with a short summary, comparing the similarity of two texts.</li>
+                                </ol>
+                                <h5>Using the results</h5>
+    
+                                <ol>
+                                    <li>Load the experiment, start the evolution process, and wait for the best solution based on metrics.</li>
+                                    <li>Export the experiment results — the platform will automatically select the prompt that provides the highest quality for your task.</li>
+                                    <li>Use the resulting prompt to solve your target problem with your LLM.</li>
+                                </ol>
+
+                                <h5>Planned features</h5>
+                                
+                                <p>Upcoming versions will include functionality for custom LLM output validation formats:</p>
+                                
                                 <ul>
                                     <li>Structured formats (JSON, XML)</li>
                                     <li>Regular expressions</li>
-                                    <li>Text similarity comparison</li>
                                     <li>Evaluation by another language model (LLM-as-a-judge)</li>
-                                    <li>Your own custom Python metrics</li>
+                                    <li>Custom Python metrics</li>
                                 </ul>
 
-                                <p>This feature is under development.</p>
+                                <p>The feature is under active development.</p>
                                 <p>Check the project roadmap and stay tuned for updates!</p>
                             </div> 
                         </div>
                     </div>
                 </div>
             </section>
+
 
 
 
