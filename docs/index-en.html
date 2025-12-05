@@ -926,10 +926,11 @@ Answer: [expected answer]
                                         <div id="promptExample" class="accordion-collapse collapse">
                                             <div class="accordion-body">
                                                 <pre><code>
-Your task: [describe what you want the LLM to do]
-Context: {column1}, {column2}, {column3}
-Question: What is the *target*?
-Answer: [expected answer]
+You are a sentiment analyst. Classify the review as positive or negative.
+Review text: {review_text}
+Rating: {rating}
+Category: {product_category}
+Answer : [expected answer]
                                                 </code></pre>
                                             </div>
                                         </div>

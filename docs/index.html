@@ -939,10 +939,11 @@ Answer: [expected answer]
                                         <div id="promptExample" class="accordion-collapse collapse">
                                             <div class="accordion-body">
                                                 <pre><code>
-Your task: [describe what you want the LLM to do]
-Context: {column1}, {column2}, {column3}
-Question: What is the *target*?
-Answer: [expected answer]
+You are a sentiment analyst. Classify the review as positive or negative.
+Review text: {review_text}
+Rating: {rating}
+Category: {product_category}
+Answer : [expected answer]
                                                 </code></pre>
                                             </div>
                                         </div>
@@ -951,7 +952,7 @@ Answer: [expected answer]
 
                                 <ol start="4">
                                     <li>Вы можете использовать автоматическое генерирование базового промпта для эволюции из шаблона или автоматически добавить столбцы из загруженного документа</li>
-                                    <li>Выберите тип задачи ( de>classification</code>, de>multi_choice</code>, de>math</code>, de>summarization</code> )</li>
+                                    <li>Выберите тип задачи ( <code>classification</code>, <code>multi_choice</code>, <code>math</code>, <code>summarization</code> )</li>
                                     <li>Настройте дополнительные параметры — количество поколений, тип LLM-модели и другие опции.</li>
                                     <li>Создайте эксперимент по кнопке Create Experiment — система автоматически присвоит ему идентификатор формата.</li>
                                     <li>Можете выбрать шаблонный эксперимент из списка — система автоматически заполнит необходимые поля и загрузит данные, останется только запустить.</li>
@@ -971,10 +972,10 @@ Answer: [expected answer]
                                 <h5>GigaEvo поддерживает следующие режимы:</h5>
     
                                 <ol>
-                                    <li><strong>Бинарная классификация текста</strong> (de>classification</code>) - модель возвращает вероятность (0.0-1.0); таргет - 0 или 1</li>
-                                    <li><strong>Выбор из нескольких вариантов ответа</strong> (de>multi_choice</code>) - модель возвращает букву ("A", "B", "C", "D", …); поддерживается до 26 классов (A-Z)</li>
-                                    <li><strong>Решение математических задач</strong> (de>math</code>) - модель возвращает численный ответ (42, 3.1415, …)</li>
-                                    <li><strong>Суммаризация входного текста в свободном виде</strong> (de>summarization</code>) - строка с кратким пересказом, сравниваем похожесть двух текстов</li>
+                                    <li><strong>Бинарная классификация текста</strong> (<code>classification</code>) - модель возвращает вероятность (0.0-1.0); таргет - 0 или 1</li>
+                                    <li><strong>Выбор из нескольких вариантов ответа</strong> (<code>multi_choice</code>) - модель возвращает букву ("A", "B", "C", "D", …); поддерживается до 26 классов (A-Z)</li>
+                                    <li><strong>Решение математических задач</strong> (<code>math</code>) - модель возвращает численный ответ (42, 3.1415, …)</li>
+                                    <li><strong>Суммаризация входного текста в свободном виде</strong> (<code>summarization</code>) - строка с кратким пересказом, сравниваем похожесть двух текстов</li>
                                 </ol>
                                 <h5>Используем результаты</h5>
     
