@@ -941,8 +941,23 @@ Answer : [expected answer]
 
                                 <ol start="4">
                                     <li>You can automatically generate the base prompt for evolution from a template or automatically add columns from the uploaded document.</li>
-                                    <li>Select the task type (<code>classification</code>, <code>multi_choice</code>, <code>math</code>, <code>summarization</code>).</li>
-                                    <li>Configure additional parameters — number of generations, LLM model type, and other options.</li>
+                                    <li>Select the type of validation (binary, continuous) and the evaluation metric relevant to your task:
+                                        <p>Binary (<strong>Binary (0/1)</strong>) - for tasks with an exact answer</p>
+                                        <ul>
+                                            <li><strong>Equality</strong> - exact match with the reference</li>
+                                            <li><strong>Substring</strong> - matching pairs of words</li>
+                                            <li><strong>RegExp</strong> - extract the answer using a given pattern</li>
+                                        </ul>
+                                        <p>Continuous (<strong>Continuous (0..1)</strong>) - for text generation tasks</p>
+                                        <ul>
+                                            <li><strong>ROUGE-1</strong> - match of individual words</li>
+                                            <li><strong>ROUGE-2</strong> - reference contained in the answer</li>
+                                            <li><strong>ROUGE-L</strong> - longest common subsequence</li>
+                                            <li><strong>BERTScore</strong> - semantic similarity</li>
+                                            <li><strong>BLEU</strong> - translation quality</li>
+                                        </ul>
+                                    </li>
+                                    <li>Configure additional parameters — number of generations, type of LLM model for evolution, and type of LLM model for validation.</li>
                                     <li>Create the experiment by clicking <strong>Create Experiment</strong> — the system will automatically assign it an identifier.</li>
                                     <li>You can also choose a template experiment from the list — the system will fill in the required fields and load the data; you’ll just need to run it.</li>
                                 </ol>
@@ -954,18 +969,6 @@ Answer : [expected answer]
                                     <li><strong>Multi-step agent stages</strong> – optimizing prompts for complex systems with several working stages.</li>
                                 </ul>
 
-                                <h5>Validating prompt quality</h5>
-                                
-                                <p>The system uses the same approach as ML tasks: it creates a population of prompts, evaluates their quality on your data, and iteratively improves the solution.</p>
-                                
-                                <h5>GigaEvo supports the following modes:</h5>
-    
-                                <ol>
-                                    <li><strong>Binary text classification</strong> (<code>classification</code>) – the model returns a probability (0.0–1.0); target - 0 or 1.</li>
-                                    <li><strong>Multiple-choice selection</strong> (<code>multi_choice</code>) – the model returns a letter ("A", "B", "C", "D", …); up to 26 classes (A–Z) are supported.</li>
-                                    <li><strong>Solving math problems</strong> (<code>math</code>) – the model returns a numeric answer (42, 3.1415, …).</li>
-                                    <li><strong>Free-form text summarization</strong> (<code>summarization</code>) – a string with a short summary, comparing the similarity of two texts.</li>
-                                </ol>
                                 <h5>Using the results</h5>
     
                                 <ol>
@@ -976,14 +979,13 @@ Answer : [expected answer]
 
                                 <h5>Planned features</h5>
                                 
-                                <p>Upcoming versions will include functionality for custom LLM output validation formats:</p>
-                                
-                                <ul>
-                                    <li>Structured formats (JSON, XML)</li>
-                                    <li>Regular expressions</li>
-                                    <li>Evaluation by another language model (LLM-as-a-judge)</li>
-                                    <li>Custom Python metrics</li>
-                                </ul>
+                                <p>In upcoming versions, the following functionality will be added:</p>
+
+                                    <ul>
+                                        <li>Structured output formats (JSON, XML)</li>
+                                        <li>Evaluation by another language model (LLM-as-a-judge)</li>
+                                        <li>Custom metrics in Python</li>
+                                    </ul>
 
                                 <p>The feature is under active development.</p>
                                 <p>Check the project roadmap and stay tuned for updates!</p>
