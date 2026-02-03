@@ -110,6 +110,7 @@
                 <a class="nav-link" href="#ui-usage">Example Project on GigaEvo</a>
                 <a class="nav-link" href="#installation">GigaEvo Installation</a>
                 <a class="nav-link" href="#evolution">Evolution of prompts for language models</a>
+                <a class="nav-link" href="#evolution_chain">Evolution of reasoning chains for language models.</a>
                 <a class="nav-link" href="#roadmap">Roadmap</a>
                 <a class="nav-link" href="#team">Team</a>
             </nav>
@@ -379,8 +380,8 @@ instances:
                                 <ol>
                                     <li>Enter the experiment name and a brief description of its objective.</li>
                                     <li>Upload the dataset.</li>
-                                    <li>Select the task type (classification, regression, or clustering), specify target metrics and parameters (for supervised tasks — the target column).</li>
-                                    <li>Configure additional parameters — number of generations, type of LLM model, and other options.</li>
+                                    <li>Select the task type (classification, regression, or clustering) and the ML model. Specify the target metrics and parameters (for supervised tasks — the target column).</li>
+                                    <li>Configure additional parameters — the number of generations, the type of LLM model, the dataset size, and the train-test split ratio.</li>
                                     <li>Create the experiment by clicking the <b>Create Experiment</b> button — the system will automatically assign it a formatted identifier.</li>
                                     <li>You can choose a template experiment from the list — the system will automatically fill in the necessary fields and upload data; you only need to start it.</li>
                                 </ol>
@@ -543,6 +544,16 @@ instances:
                                 <pre><code>make deploy
 # или
 ./deploy.sh deploy</code></pre>
+
+
+                                <ul>
+                                    <li><strong>Runner pool size configuration</strong></li>
+                                </ul>
+
+                                <p>By default, the platform starts with a single runner container instance, which means only one experiment can run at a time. To run multiple experiments in parallel, you need to increase the number of available runners:</p>
+
+                                <pre><code># In the .env file (or export before running `make deploy`)
+RUNNER_POOL_SIZE=3</code></pre>
 
                                 <ul>
                                     <li><strong>Infrastructure separately:</strong></li>
@@ -957,7 +968,7 @@ Answer : [expected answer]
                                             <li><strong>BLEU</strong> - translation quality</li>
                                         </ul>
                                     </li>
-                                    <li>Configure additional parameters — number of generations, type of LLM model for evolution, and type of LLM model for validation.</li>
+                                    <li>Configure the additional parameters: number of generations, type of LLM model for evolution, type of LLM model for validation, dataset size, and train-test split size.</li>
                                     <li>Create the experiment by clicking <strong>Create Experiment</strong> — the system will automatically assign it an identifier.</li>
                                     <li>You can also choose a template experiment from the list — the system will fill in the required fields and load the data; you’ll just need to run it.</li>
                                 </ol>
@@ -995,7 +1006,45 @@ Answer : [expected answer]
                 </div>
             </section>
 
+            <!-- Эволюция -->
+            <section class="mb-5" id="evolution_chain">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">                            
+                            <!-- Основной заголовок секции -->
+                            <h3 class="mb-2">Evolution of reasoning chains for language models.</h3> 
 
+                            <!-- Описание -->
+                            <div class="mb-4">   
+                                <p>In the new version, GigaEvo Platform has gained a feature for automatic enhancement of structured reasoning chains in the CARL library format from the MAESTRO framework. </p>
+                                <p>More details about the framework’s format and capabilities - <a href="https://airi-institute.github.io/maestro-cover/index-en.html">MAESTRO</a> </p>
+                                
+                                <h5>Creating an experiment with chain evolution</h5>
+                                <div class="mb-4">   
+                                    <a
+                                        href="images/ui_evolution_chain.jpg"
+                                        data-fancybox="single"
+                                        data-caption="Evolution_Chain UI"
+                                    >
+                                        <img src="images/ui_evolution_chain.jpg" alt="Evolution UI" class="img-fluid rounded" />
+                                    </a>
+                                </div> 
+
+                                <ol>
+                                    <li>Enter the title and a brief description of the experiment’s objective.</li>
+                                    <li>Upload the dataset and specify the target metrics (target column).</li>
+                                    <li>Enter the base chain for evolution (you can use automatic generation of the base chain for evolution).</li>
+                                    <li>Select the evolution mode — evolve the entire chain or a single chain step (specify the step you want to evolve; in that case, the remaining steps will remain unchanged).</li>
+                                    <li>Select the validation type (binary (for this validation type, also specify the exact method — equality, substring, regexp (for this method, enter a regular expression with a capture group for extraction and comparison against the reference)), continuous).</li>
+                                    <li>Configure additional parameters — number of generations, LLM model type for evolution, and LLM model type for validation.</li>
+                                    <li>Create an experiment by clicking Create Experiment — the system will automatically assign it an ID in the required format.</li>
+                                    <li>You can select a template experiment from the list — the system will automatically populate the required fields and upload the data; you’ll only need to start it.</li>
+                                </ol>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
             <!-- Дорожная карта -->
