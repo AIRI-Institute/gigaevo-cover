@@ -377,14 +377,15 @@ instances:
                             </div> 
                                 
                             <!-- Пошаговое описание -->
-                                <ol>
-                                    <li>Enter the experiment name and a brief description of its objective.</li>
-                                    <li>Upload the dataset.</li>
-                                    <li>Select the task type (classification, regression, or clustering) and the ML model. Specify the target metrics and parameters (for supervised tasks — the target column).</li>
-                                    <li>Configure additional parameters — the number of generations, the type of LLM model, the dataset size, and the train-test split ratio.</li>
-                                    <li>Create the experiment by clicking the <b>Create Experiment</b> button — the system will automatically assign it a formatted identifier.</li>
-                                    <li>You can choose a template experiment from the list — the system will automatically fill in the necessary fields and upload data; you only need to start it.</li>
-                                </ol>
+                            <ol>
+                                <li>Enter the experiment name and a brief description of its objective.</li>
+                                <li>Upload the dataset.</li>
+                                <li>Select the task type (classification, regression, or clustering) and the ML model; specify the target metrics and parameters (for supervised tasks, also specify the target column).</li>
+                                <li>Configure additional parameters: the number of generations, the LLM model type, the dataset size, and the train-test split size.</li>
+                                <li>You can enable the mode for using the best ideas from previous experiments and accumulating experience.</li>
+                                <li>Create the experiment by clicking the <b>Create Experiment</b> button — the system will automatically assign it an identifier in the required format.</li>
+                                <li>You can also choose a template experiment from the list — the system will automatically fill in the required fields and upload the data, and all that remains is to run it.</li>
+                            </ol>
 
                             <!-- Начать -->
                             <h4 class="mb-4">Starting the Experiment</h4>
@@ -425,11 +426,13 @@ instances:
                             <!-- Пошаговое описание -->
 
                             <ol>
-                                <li>Select an experiment from the list of available ones — the data will load automatically.</li>
-                                <li>Monitor key evolution metrics (best metric, best generation, number of iterations and programs) — values update in real time.</li>
-                                <li>View the evolution dynamics chart — it refreshes automatically.</li>
-                                <li>If necessary, click the <b>Refresh results</b> button to manually update the data.</li>
+                                <li>Select an experiment from the list of available ones — the data will be loaded automatically.</li>
+                                <li>Track the key evolution metrics (best metric, best generation, number of iterations, and programs) — the values are updated in real time.</li>
+                                <li>Monitor token usage during the evolution process.</li>
+                                <li>View the evolution dynamics chart — it updates automatically.</li>
+                                <li>If necessary, click the <b>Refresh results</b> button to update the data manually.</li>
                             </ol>
+
 
                             <h4>Viewing Experiment Results</h4>
                             <!-- UI -->
@@ -448,7 +451,29 @@ instances:
                                 <li>Select an experiment from the list.</li>
                                 <li>Review the current best program — it is displayed in real time.</li>
                                 <li>Download the archive containing the best program and the model code used for testing.</li>
-                                <li>If necessary, click the <b>Refresh results</b> button to manually update the results.</li>
+                                <li>If necessary, click the <b>Refresh results</b> button to update the results manually.</li>
+                                <li>When the experiment is completed (Completed status), you can save new strong ideas, the best programs, and statistics on their usage to memory.</li>
+                            </ol>
+
+                            <!-- UI -->
+                            <div class="mb-4">
+                                <a
+                                        href="images/ui_result_1.jpg"
+                                        data-fancybox="single"
+                                        data-caption="Experiment Result UI"
+                                >
+                                    <img src="images/ui_result_1.jpg" alt="Experiment Result UI" class="img-fluid rounded" />
+                                </a>
+                            </div>
+
+                            <!-- Пошаговое описание -->
+
+                            <p>The following features are also available for chain evolution:</p>
+                            <ol>
+                                <li>View the progress of the chain evolution compared to the original one.</li>
+                                <li>Review the execution feedback for the chain for each iteration.</li>
+                                <li>Download the archive containing the best program and the model code used for testing.</li>
+                                <li>If necessary, click the <strong>Refresh results</strong> button to update the results manually.</li>
                             </ol>
 
                             <!-- Runner -->
@@ -968,9 +993,10 @@ Answer : [expected answer]
                                             <li><strong>BLEU</strong> - translation quality</li>
                                         </ul>
                                     </li>
-                                    <li>Configure the additional parameters: number of generations, type of LLM model for evolution, type of LLM model for validation, dataset size, and train-test split size.</li>
-                                    <li>Create the experiment by clicking <strong>Create Experiment</strong> — the system will automatically assign it an identifier.</li>
-                                    <li>You can also choose a template experiment from the list — the system will fill in the required fields and load the data; you’ll just need to run it.</li>
+                                    <li>Configure the additional parameters - the number of generations, the LLM model type for evolution, the LLM model type for validation, the dataset size, and the train-test split size.</li>
+                                    <li>Select the mode for using the best ideas from previous experiments and accumulating experience.</li>
+                                    <li>Create the experiment by clicking the Create Experiment button — the system will automatically assign it an identifier in the required format.</li>
+                                    <li>You can choose a template experiment from the list — the system will automatically fill in the required fields and upload the data, and all that remains is to launch it.</li>
                                 </ol>
                                 <p>The method works for any LLM-oriented tasks with verifiable results, for example:</p>
     
@@ -1028,18 +1054,39 @@ Answer : [expected answer]
                                     >
                                         <img src="images/ui_evolution_chain.jpg" alt="Evolution UI" class="img-fluid rounded" />
                                     </a>
-                                </div> 
+                                </div>
 
                                 <ol>
-                                    <li>Enter the title and a brief description of the experiment’s objective.</li>
-                                    <li>Upload the dataset and specify the target metrics (target column).</li>
-                                    <li>Enter the base chain for evolution (you can use automatic generation of the base chain for evolution).</li>
-                                    <li>Select the evolution mode — evolve the entire chain or a single chain step (specify the step you want to evolve; in that case, the remaining steps will remain unchanged).</li>
-                                    <li>Select the validation type (binary (for this validation type, also specify the exact method — equality, substring, regexp (for this method, enter a regular expression with a capture group for extraction and comparison against the reference)), continuous).</li>
-                                    <li>Configure additional parameters — number of generations, LLM model type for evolution, and LLM model type for validation.</li>
-                                    <li>Create an experiment by clicking Create Experiment — the system will automatically assign it an ID in the required format.</li>
-                                    <li>You can select a template experiment from the list — the system will automatically populate the required fields and upload the data; you’ll only need to start it.</li>
+                                    <li>Enter the experiment name and a brief description of its objective.</li>
+                                    <li>Upload the dataset.</li>
+                                    <li>Specify the target metrics (target column), and configure additional parameters — the number of generations, the LLM model type for evolution, and the LLM model type for chain execution.</li>
+                                    <li>Set the maximum chain size for evolution, choose the evolution mode — evolution of the entire chain or of an individual chain step, and configure the dataset size and the train-test split size.</li>
+                                    <li>Add chain execution feedback during evolution (Detailed, Summary, Errors Only).</li>
+                                    <li>Select the validation type (binary — for this validation type, also specify the exact method: equality, substring, or regexp; for the regexp method, enter a regular expression with a capture group for extraction and comparison with the reference value; continuous).</li>
+                                    <li>Select the mode for using the best ideas from previous experiments and accumulating experience.</li>
+                                    <li>You can choose a template experiment from the list — the system will automatically fill in the required fields and upload the data, and all that remains is to launch it.</li>
                                 </ol>
+
+                                <h6>To create an experiment with a reasoning chain, you can use the chain‑creation builder.</h6>
+                                <div class="mb-4">
+                                    <a
+                                            href="images/ui_evolution_chain_1.jpg"
+                                            data-fancybox="single"
+                                            data-caption="Evolution_Chain UI"
+                                    >
+                                        <img src="images/ui_evolution_chain_1.jpg" alt="Evolution UI" class="img-fluid rounded" />
+                                    </a>
+                                </div>
+
+                                <ol>
+                                    <li>Select the chain creation mode (Visual Builder, JSON Editor, Python Code).</li>
+                                    <li>Add a step of a specific type (LLM — Generates text, prompts, or responses using a language model, TOOL — Calls an external tool or function registered in the ReasoningContext, TRANSFORM — Transforms output data from previous steps using expressions, MEMORY — Reads from or writes to shared memory for use across steps, MCP — Calls a procedure via Model Context Protocol (MCP), CONDITIONAL — Conditionally branches execution based on conditions, STRUCTURED_OUTPUT — Generates JSON output constrained by a JSON Schema).</li>
+                                    <li>Select a step in the chain to edit, freeze, or delete it.</li>
+                                    <li>Fill in the required fields for each chain step type for evolution.</li>
+                                    <li>Save the step or cancel adding the step.</li>
+                                    <li>Create the experiment by clicking the Create Experiment button — the system will automatically assign it an identifier in the required format.</li>
+                                </ol>
+
                             </div> 
                         </div>
                     </div>
